@@ -3,7 +3,7 @@
 ## 为了您的数据安全,仓库必须为私有!!!
 ## 配置文件部署方式说明:
 1. 需要配合配置文件分支config使用.(请运行对应action获取分支,获取后点击左上方 main 来切换分支.)
-2. TENCENT开头的NAME/REGION(SCF_REGION)/MEMORYSIZE/TIMEOUT依然使用Secrets
+2. TENCENT开头的NAME/REGION/MEMORYSIZE/TIMEOUT依然使用Secrets
 3. PAT依然使用Secrests
 4. TENCENT的SECRET_ID/SECRET_KEY请填入config分支的.env文件.
 5. 其余所有环境变量填入config分支的config.yml格式请照第一行填写(追加在后面,每个一行,英文冒号,注意冒号后方空格.bool值(true/false),请带引号, 如XXXX: 'false').
@@ -12,7 +12,7 @@
 1. TENCENT_NAME(Secret): 函数名字,修改后注意删除原来名字的函数,名字强烈建议自己搞一个,别用默认的.
 2. TENCENT_MEMORYSIZE(Secret): 运行内存64,128,256.大内存会加快配额消耗.单位Mb.不建议修改.
 3. TENCENT_TIMEOUT(Secret): 云函数超时时间,单位秒.不建议修改.简单解决超时问题就是加这个了.不是很推荐,但是也可以.所以多号最简单就是拉长超时.
-4. SCF_REGION(Secret): 云函数部署地区,注意修改后删除原地区旧函数.[地区费用表](https://cloud.tencent.com/document/product/583/12281).
+4. TENCENT_REGION(Secret): 云函数部署地区,注意修改后删除原地区旧函数.[地区费用表](https://cloud.tencent.com/document/product/583/12281).
 5. NOT_RUN(环境变量): 不运行的脚本.如: aaa&bbb&ccc. 无默认值
 ## 云函数常用功能:
 ### 云函数如何调试/手动运行脚本
