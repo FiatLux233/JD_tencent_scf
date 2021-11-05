@@ -88,7 +88,7 @@ Message写某个小时(如13,则为13点),就可以现在触发一次那个小�
 4. 支持config_diy.json自定义运行规则,见下文.[部分例子](https://github.com/Ca11back/scf-experiment/tree/master/examples)
 5. 之前添加Secret:EXPERIMENT.请删除.避免下一次测试开启自动载入.
 ### config_diy.json使用说明/例子:
-**前排提醒,diy文件夹下confg_diy.json中的内容会对config.json也就是官方默认配置的规则是:有则覆盖,无则合并.比如config.json中某脚本4小时运行一次,我在confg_diy.json中3小时运行一次,则规则覆盖.如果那个脚本官方配置中没有,则使用confg_diy.json的配置**
+**前排提醒,diy文件夹下config_diy.json中的内容会对config.json也就是官方默认配置的规则是:有则覆盖,无则合并.比如config.json中某脚本4小时运行一次,我在config_diy.json中3小时运行一次,则规则覆盖.如果那个脚本官方配置中没有,则使用config_diy.json的配置**
 
 1. 在diy文件夹下新加入config_diy.json来自定义脚本运行,格式与config.json相同. 比如我想自定义运行xx_aaa脚本,从每天6点到23点(另一种时间写入方式见下方第3条)则config_diy为:
 ```json
