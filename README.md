@@ -9,7 +9,7 @@
 5. 其余所有环境变量填入config分支的config.yml格式请照第一行填写(追加在后面,每个一行,英文冒号,注意冒号后方空格.bool值(true/false),请带引号, 如XXXX: 'false').
 
 ## 云函数部分常用变量说明(默认值见仓库serverless.yml):
-1. TENCENT_NAME(Secret): 函数名字,修改后注意删除原来名字的函数,名字强烈建议自己搞一个,别用默认的.
+1. TENCENT_NAME(Secret): 函数名字,修改后注意删除原来名字的函数,名字强烈建议自定义一个,不建议使用默认名称.
 2. TENCENT_MEMORYSIZE(Secret): 运行内存64,128,256.大内存会加快配额消耗.单位Mb.不建议修改.
 3. TENCENT_TIMEOUT(Secret): 云函数超时时间,单位秒.不建议修改.简单解决超时问题就是加这个了.不是很推荐,但是也可以.所以跑不完最简单就是拉长超时.
 4. SCF_REGION(Secret): 云函数部署地区,注意修改后删除原地区旧函数.[地区费用表](https://cloud.tencent.com/document/product/583/12281).
@@ -27,6 +27,8 @@ Message写某个小时(如13,则为13点),就可以现在触发一次那个小�
 **触发参数结尾别带.js**
 ### 云函数如何直接执行单个仓库文件
 按上一步,但修改timer触发器TriggerName为'remote'.
+
+如需执行backUp内脚本,Message写backUp/xxx
 
 会自动远程拉取仓库内对应脚本并运行一次(但并不会更新云函数).
 
