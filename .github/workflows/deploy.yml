@@ -2,14 +2,14 @@ name: Deploy(部署到云) #部署脚本每次执行就是部署最新代码上�
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 1,8,15 * * *'
+    - cron: '55 1,8,15 * * *'
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     if: github.event.repository.owner.id == github.event.sender.id
     env:
-      PAT: ${{ secrets.PAT }} #此处PAT需要申请，教程详见：https://www.jianshu.com/p/bb82b3ad1d11,需要repo和workflow权限
+      SCF_NT: ${{ secrets.SCF_NT }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -68,6 +68,14 @@ jobs:
         run: |
           echo 'Not a private repo!!! Please change to private!'
           echo 'require("./sendNotify").sendNotify("仓库非私有!","配置文件部署方式仓库必须为私有!(如已经私有请忽略并反馈Issues,感谢!)")' > notify.js
+          node notify.js
+          rm -rf notify.js
+      - name: tmp notify
+        working-directory: ./JD_tencent_scf
+        if: ${{ env.SCF_NT != 'false'}}
+        run: |
+          echo 'tmp notify'
+          echo 'require("./sendNotify").sendNotify("云函数年包购买提醒","购买地址:\nhttps://curl.qcloud.com/ECJ7Mxgy\nhttps://curl.qcloud.com/66VpPsEw\n请入群查看详细信息\n在仓库增加一个Secrets:SCF_NT 为 false来关闭通知\n")' > notify.js
           node notify.js
           rm -rf notify.js
       - name: deploy
